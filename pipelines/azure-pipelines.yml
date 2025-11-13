@@ -1,0 +1,55 @@
+# Example Azure DevOps pipeline for deploying the secure environment.
+# Replace pool, service connection, and variable names with your own in your project.
+
+trigger: none
+
+stages:
+  - stage: Validate
+    displayName: "Validate Bicep (What-If)"
+    jobs:
+      - job: Validate
+        steps:
+          - task: AzureCLI@2
+            displayName: "What-if secure environment"
+            inputs:
+              azureSubscription: "<replace-with-service-connection>"
+              scriptType: pscore
+              scriptLocation: inlineScript
+              inlineScript: |
+                $envName = "$(EnvironmentName)"
+                $location = "$(Location)"
+                $rg = "rg-sec-$envName"
+
+                az group create --name $rg --location $location
+
+                az deployment group what-if `
+                  --name "sec-validate-$envName" `
+                  --resource-group $rg `
+                  --template-file "./bicep/main.bicep" `
+                  --parameters "@./scripts/sample-parameters.json"
+
+  - stage: Deploy
+    displayName: "Deploy Secure Environment"
+    dependsOn: Validate
+    condition: succeeded()
+    jobs:
+      - job: Deploy
+        steps:
+          - task: AzureCLI@2
+            displayName: "Deploy secure environment"
+            inputs:
+              azureSubscription: "<replace-with-service-connection>"
+              scriptType: pscore
+              scriptLocation: inlineScript
+              inlineScript: |
+                $envName = "$(EnvironmentName)"
+                $location = "$(Location)"
+                $rg = "rg-sec-$envName"
+
+                az group create --name $rg --location $location
+
+                az deployment group create `
+                  --name "sec-$envName" `
+                  --resource-group $rg `
+                  --template-file "./bicep/main.bicep" `
+                  --parameters "@./scripts/sample-parameters.json"

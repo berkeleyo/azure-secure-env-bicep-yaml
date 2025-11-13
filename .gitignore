@@ -1,0 +1,66 @@
+# Build artifacts
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.bak
+
+# Node / front-end (in case you add UI tooling)
+node_modules/
+dist/
+build/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+pip-wheel-metadata/
+
+# .NET / C#
+bin/
+obj/
+
+# Terraform (if added later)
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*.override.tf
+*.override.tf.json
+
+# Bicep cache / compiled templates (optional)
+*.bicep.parameters.json
+*.whatif.json
+
+# Logs
+*.log
+logs/
+
+# IDEs & editors
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# OS junk
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Local configuration
+*.local.json
+*.local.yml
+*.local.yaml
+*.local.env
+*.secrets.json
+*.private.*

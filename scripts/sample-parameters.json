@@ -1,0 +1,17 @@
+{
+  // Example, redacted parameter file.
+  // Replace values in your private fork; do not commit real IDs or secrets.
+  "environmentName": {
+    "value": "dev-sec"
+  },
+  "location": {
+    "value": "uksouth"
+  },
+  "tags": {
+    "value": {
+      "project": "secure-env-bootstrap",
+      "owner": "example-owner",
+      "dataClassification": "Internal"
+    }
+  }
+}

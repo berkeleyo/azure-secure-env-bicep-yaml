@@ -245,5 +245,9 @@ If you are using this as a **portfolio** or **personal reference repo**:
 
 ## 📎 License
 
-Attach the license that matches how you intend to share this material (MIT, Apache-2.0, or private).  
-If you are unsure and this is purely for interviewing/portfolio purposes, you can keep the repo private.
+This project is licensed under the **MIT License**.  
+See the full license text in the [`LICENSE`](./LICENSE) file.
+
+⚠️ **Note:**  
+These templates and documents are provided for **learning, demonstration, and portfolio purposes only**.  
+They are **not** production-ready without security review, architectural validation, and alignment to your organisation’s governance model.
